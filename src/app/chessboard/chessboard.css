@@ -10,6 +10,7 @@
 .square {
   align-items: center;
   font-size: 30px;
+  color: black;
 }
 
 @media (max-width: 600px) {
@@ -20,9 +21,9 @@
 }
 
 .light {
-  background-color: #f9f5e7;
+  background-color: #f0d9b5;
 }
 
 .dark {
-  background-color: #876445;
+  background-color: #b58863;
 }
