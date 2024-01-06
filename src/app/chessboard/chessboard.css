@@ -1,16 +1,39 @@
+:root {
+  --size: calc(80vmin / 8);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .chessboard {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  width: 80vw;
-  height: 80vh;
-  margin: auto;
+  grid-template-columns: repeat(8, var(--size));
+  grid-template-rows: repeat(8, var(--size));
+  width: calc(var(--size) * 8);
+  height: calc(var(--size) * 8);
 }
 
 .square {
-  align-items: center;
-  font-size: 30px;
-  color: black;
+  width: var(--size);
+  height: var(--size);
+}
+
+.square:hover {
+  opacity: 0.7;
+}
+
+.light {
+  background-color: #f0d9b5;
+  color: #000; /* dark text for light background */
+}
+
+.dark {
+  background-color: #b58863;
+  color: #fff; /* light text for dark background */
 }
 
 @media (max-width: 600px) {

@@ -1,11 +1,23 @@
 import React from 'react';
+import Image from 'next/image';
 import './chessboard.css';
 
 const Chessboard = () => {
   const renderSquare = (row: number, col: number, piece: string) => {
     const isLightSquare = (row + col) % 2 === 0;
     const squareClass = `square ${isLightSquare ? 'light' : 'dark'}`;
-    return <div className={squareClass}>{piece}</div>;
+    return (
+      <div className={squareClass}>
+        {piece && (
+          <Image
+            src={`./images/${piece}.svg`}
+            alt={piece}
+            width={500}
+            height={500}
+          />
+        )}
+      </div>
+    );
   };
 
   const renderBoard = (board: string[][]) => {
@@ -19,17 +31,39 @@ const Chessboard = () => {
   };
 
   const board = [
-    ['8', '', ' ', ' ', ' ', ' ', '', ''],
-    ['7', '', ' ', ' ', ' ', ' ', '', ''],
-    ['6', '', ' ', ' ', ' ', ' ', '', ''],
-    ['5', '', ' ', ' ', ' ', ' ', '', ''],
-    ['4', '', ' ', ' ', ' ', ' ', '', ''],
-    ['3', '', ' ', ' ', ' ', ' ', '', ''],
-    ['2', '', ' ', ' ', ' ', ' ', '', ''],
-    ['A1', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    [
+      'blackRook',
+      'blackKnight',
+      'blackBishop',
+      'blackQueen',
+      'blackKing',
+      'blackBishop',
+      'blackKnight',
+      'blackRook',
+    ],
+    Array(8).fill('blackPawn'),
+    Array(8).fill(null),
+    Array(8).fill(null),
+    Array(8).fill(null),
+    Array(8).fill(null),
+    Array(8).fill('whitePawn'),
+    [
+      'whiteRook',
+      'whiteKnight',
+      'whiteBishop',
+      'whiteQueen',
+      'whiteKing',
+      'whiteBishop',
+      'whiteKnight',
+      'whiteRook',
+    ],
   ];
 
-  return <div className="chessboard">{renderBoard(board)}</div>;
+  return (
+    <div className="container">
+      <div className="chessboard">{renderBoard(board)}</div>
+    </div>
+  );
 };
 
 export default Chessboard;
