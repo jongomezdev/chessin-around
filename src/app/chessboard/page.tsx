@@ -10,10 +10,10 @@ const Chessboard = () => {
       <div className={squareClass}>
         {piece && (
           <Image
-            src={`./images/${piece}.svg`}
+            src={`/${piece}.svg`}
             alt={piece}
-            width={500}
-            height={500}
+            layout="fill"
+            objectFit="contain"
           />
         )}
       </div>
